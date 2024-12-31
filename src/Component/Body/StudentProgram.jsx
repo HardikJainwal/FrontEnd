@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 
+// Direct imports for achievement images
+import achievement1 from "/src/assets/achievements/Achievements1.jpeg";
+import achievement2 from "/src/assets/achievements/Achievements2.jpeg";
+import achievement3 from "/src/assets/achievements/Achievements3.jpeg";
+import achievement4 from "/src/assets/achievements/Achievements4.jpeg";
+import achievement5 from "/src/assets/achievements/Achievements5.jpeg";
+
 const programs = {
   DIPLOMA: [
     { code: "CSE", name: "Computer Science Engineering" },
@@ -28,9 +35,11 @@ const programs = {
 };
 
 const carouselItems = [
-  "Achievement 1: Won National Level Hackathon",
-  "Achievement 2: 100% Placement Record",
-  "Achievement 3: NAAC A+ Accreditation",
+  { image: achievement1 },
+  { image: achievement2 },
+  { image: achievement3 },
+  { image: achievement4 },
+  { image: achievement5 }
 ];
 
 const StudyProgramsSection = () => {
@@ -50,19 +59,32 @@ const StudyProgramsSection = () => {
     <div className="w-full bg-blue-50 p-8 mt-10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-          {/* Recent Achievements Section */}
+          
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-800 border-l-4 border-blue-600 pl-4">
               Recent Achievements
             </h2>
-            <div className="h-[300px] sm:h-[400px] bg-gray-100 rounded-lg overflow-hidden shadow-md">
-              <div className="w-full h-full flex items-center justify-center p-4 sm:p-8 text-lg sm:text-xl font-medium text-gray-800 transition-opacity duration-500">
-                {carouselItems[currentCarouselIndex]}
+            <div className="h-[300px] sm:h-[400px] bg-gray-100 rounded-lg overflow-hidden shadow-md relative">
+              <div className="absolute inset-0">
+                <img
+                  src={carouselItems[currentCarouselIndex].image}
+                  alt="Achievement"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {carouselItems.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentCarouselIndex(index)}
+                    
+                  />
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Study Programs Section */}
+         
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
               <h2 className="text-2xl font-bold text-gray-800 border-l-4 border-blue-600 pl-4">
@@ -98,7 +120,7 @@ const StudyProgramsSection = () => {
                 {programs[selectedProgram].map((program) => (
                   <div
                     key={program.code}
-                    className="bg-white rounded-lg shadow-sm p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer h-32"
+                    className="bg-white rounded-lg shadow-sm p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer h-28"
                   >
                     <div className="h-full flex flex-col justify-between">
                       <h3 className="text-lg font-bold">{program.code}</h3>

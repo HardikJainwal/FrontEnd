@@ -1,22 +1,28 @@
-import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import React from "react";
+import { ExternalLink } from "lucide-react";
 
 const AnnouncementStrip = () => {
   const announcements = [
     {
       text: "Click here for e-Library Software (for DSEU Faculty Members)",
-      link: "#"
+      link: "#",
     },
     {
       text: "UGC Guidelines on Anti-Ragging",
-      link: "#"
-    }
+      link: "#",
+    },
   ];
 
   return (
-    <div className="bg-white border-y border-gray-200">
-      <div className="h-8 flex items-center overflow-hidden whitespace-nowrap relative">
-        <div className="animate-marquee inline-flex items-center absolute">
+    <div className="flex bg-white border-y border-gray-200">
+      
+      <div className="bg-blue-600 text-white flex items-center px-4">
+        <span className="text-lg font-bold">Announcements</span>
+      </div>
+
+  
+      <div className="h-10 flex items-center overflow-hidden relative w-full">
+        <div className="animate-marquee inline-flex items-center absolute whitespace-nowrap">
           {[...Array(2)].map((_, duplicateIndex) => (
             <div key={duplicateIndex} className="inline-flex items-center">
               {announcements.map((announcement, index) => (

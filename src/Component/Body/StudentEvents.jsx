@@ -1,25 +1,20 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
+import activity1 from "/src/assets/Activities/Activities1.jpeg";
+import activity2 from "/src/assets/Activities/Activities2.jpeg";
+import activity3 from "/src/assets/Activities/Activities3.jpeg";
+import activity4 from "/src/assets/Activities/Activities4.jpeg";
+import activity5 from "/src/assets/Activities/Activities5.jpeg";
+import activity6 from "/src/assets/Activities/Activities6.jpeg";
+import activity7 from "/src/assets/Activities/Activities7.jpeg";
+
 const EventsAndActivities = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Import images from assets directory
-  const images = import.meta.glob('../../assets/CampusEvents/*.{png,jpg,jpeg,svg}', {
-    eager: true,
-    import: 'default',
-  });
+  const carouselImages = [activity1, activity2, activity3];
+  const gridImages = [activity4, activity5, activity6, activity7];
 
-  // Convert images object to array and get URLs
-  const imageUrls = Object.values(images);
-
-  // Use first 3 images for carousel
-  const carouselImages = imageUrls.slice(0, 3);
-  
-  // Use next 4 images for grid
-  const gridImages = imageUrls.slice(3, 7);
-
-  // Auto-scroll carousel
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => 
@@ -32,12 +27,12 @@ const EventsAndActivities = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Left Section */}
+     
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-blue-800 border-l-4 border-blue-800 pl-3">
             STUDENT EVENTS & ACTIVITIES
           </h2>
-          <div className="relative overflow-hidden rounded-lg h-80">
+          <div className="relative overflow-hidden rounded-lg h-[400px]"> 
             {carouselImages.map((img, index) => (
               <div
                 key={index}
@@ -56,6 +51,7 @@ const EventsAndActivities = () => {
           </div>
         </div>
 
+      
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-blue-800 border-l-4 border-blue-800 pl-3">
             VOICE OF DSEU
@@ -64,7 +60,7 @@ const EventsAndActivities = () => {
             {gridImages.map((img, index) => (
               <button
                 key={index}
-                className="relative overflow-hidden rounded-lg group h-39"
+                className="relative overflow-hidden rounded-lg group h-[190px]"
                 onClick={() => console.log(`Clicked image ${index + 1}`)}
               >
                 <img

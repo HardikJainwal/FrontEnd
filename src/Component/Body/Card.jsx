@@ -37,13 +37,13 @@ const Card = () => {
 
   return (
     <div className="container mx-auto px-4 py-4">
-      {/* Heading */}
+    
       <h2 className="text-4xl font-extrabold text-center text-blue-900 mb-8 mt-10 font-sans">
         Information Bulletin
         <div className="mt-2 mx-auto w-20 h-1 bg-blue-600 rounded"></div>
       </h2>
 
-      {/* Cards */}
+    
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {cards.map((card, index) => (
           <div
@@ -60,7 +60,7 @@ const Card = () => {
                   {[...card.content, ...card.content].map((item, idx) => (
                     <li
                       key={idx}
-                      className="hover:bg-orange-400 rounded py-1 px-2 transition-colors"
+                      className="hover:bg-blue-100 rounded py-1 px-2 transition-colors"
                     >
                       <a href="#" className="text-gray-700 hover:text-blue-900">
                         {item}
